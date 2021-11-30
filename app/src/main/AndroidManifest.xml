@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.splyza.team">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:fullBackupOnly="true"
@@ -11,8 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Invitation">
         <activity
+            android:name=".QrCodeActivity"
+            android:exported="false"
+            android:label="@string/qrcode_screen"
+            android:parentActivityName=".InviteActivity" />
+        <activity
+            android:name=".InviteActivity"
+            android:exported="false"
+            android:label="@string/invite_screen"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="@string/home_screen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

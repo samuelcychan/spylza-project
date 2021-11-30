@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewmodel"
+            type="com.splyza.team.data.TeamViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".InviteActivity">
+
+        <TextView
+            android:id="@+id/member_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/regular_margin"
+            android:text="@{@string/member_count(viewmodel.memberCount)}"
+            app:layout_constraintLeft_toLeftOf="@id/permission_title"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/member_limit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/regular_margin"
+            android:text="@{@string/member_limit(viewmodel.memberLimit)}"
+            app:layout_constraintRight_toRightOf="@id/permission_title"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/support_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/regular_margin"
+            android:text="@{@string/support_count(viewmodel.supporterCount)}"
+            android:visibility="@{viewmodel.supporterLimit > 0 ? View.VISIBLE : View.GONE}"
+            app:layout_constraintLeft_toLeftOf="@id/permission_title"
+            app:layout_constraintTop_toBottomOf="@id/member_count" />
+
+        <TextView
+            android:id="@+id/support_limit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/regular_margin"
+            android:text="@{@string/support_limit(viewmodel.supporterLimit)}"
+            android:visibility="@{viewmodel.supporterLimit > 0 ? View.VISIBLE : View.GONE}"
+            app:layout_constraintRight_toRightOf="@id/permission_title"
+            app:layout_constraintTop_toBottomOf="@id/member_limit" />
+
+        <TextView
+            android:id="@+id/permission_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/regular_margin"
+            android:text="@string/permission_label"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/support_limit"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <Spinner
+            android:id="@+id/permission_spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/regular_margin"
+            android:onItemSelected="@{(parent,view,pos,id)->viewmodel.onSelectItem(parent,view,pos,id)}"
+            android:spinnerMode="dialog"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/permission_title"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <TextView
+            android:id="@+id/permission_hint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/regular_margin"
+            android:text="@string/permission_hint"
+            app:layout_constraintLeft_toLeftOf="@id/permission_spinner"
+            app:layout_constraintRight_toRightOf="@id/permission_spinner"
+            app:layout_constraintTop_toBottomOf="@id/permission_spinner"
+            app:layout_constraintWidth_percent="0.75" />
+
+        <TextView
+            android:id="@+id/permission_intro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/regular_margin"
+            android:text="@string/permission_intro"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@id/permission_spinner"
+            app:layout_constraintRight_toRightOf="@id/permission_spinner"
+            app:layout_constraintTop_toBottomOf="@id/permission_hint" />
+
+        <Button
+            android:id="@+id/share_qr_code_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/regular_margin"
+            android:text="@string/share_qrcode_btn"
+            android:textAllCaps="false"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/permission_intro"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <Button
+            android:id="@+id/copy_link_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/regular_margin"
+            android:text="@string/copy_linK_btn"
+            android:textAllCaps="false"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/share_qr_code_btn"
+            app:layout_constraintWidth_percent="0.8" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

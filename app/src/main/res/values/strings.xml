@@ -1,3 +1,24 @@
 <resources>
-    <string name="app_name">Invitation</string>
+<string name="app_name">SplyzaTeam</string>
+<string name="home_screen">Home</string>
+<string name="invite_screen">Invite Members</string>
+<string name="qrcode_screen">My QR Code</string>
+<string name="invite_btn">Team invitation</string>
+<string name="member_count">Current Members <b>%d</b></string>
+<string name="member_limit">Limit <b>%d</b></string>
+<string name="support_count">Current Supporters <b>%d</b></string>
+<string name="support_limit">Limit <b>%d</b></string>
+<string name="share_qrcode_btn">Share QR Code</string>
+<string name="copy_linK_btn">Copy Link</string>
+<string name="permission_label">Invite Permissions</string>
+<string name="permission_hint">Invite URLs are valid for 7 days. Permissions can be changed from the member management view.</string>
+<string name="permission_intro">What are Permissions?</string>
+    <string name="qrcode_failure">Cannot generate QR code properly!</string>
+    <string name="qr_image_desc">QR code image from invite link.</string>
+    <string-array name="roles">
+    <item>Coach</item>
+    <item>Player Coach</item>
+    <item>Player</item>
+    <item>Supporter</item>
+</string-array>
 </resources>
