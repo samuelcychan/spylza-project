@@ -9,14 +9,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.splyza.team.api.MockService
 import kotlinx.coroutines.launch
 
 class TeamViewModel : ViewModel(), Observable {
     private val _team = MutableLiveData<Team>()
     val team: LiveData<Team>
         get() = _team
-    var teamId = ""
-
+    var teamId = "57994f271ca5dd20847b910c"
     private var _role = "readonly"  // default role value
 
     @Suppress("UNUSED_PARAMETER")
@@ -62,25 +62,13 @@ class TeamViewModel : ViewModel(), Observable {
     }
 
     private fun getTeamData() {
-        //ToDo: replace the test data with REST body.
-        val id = "57994f271ca5dd20847b910c"
-        val members = Members(
-            total = 89,
-            administrators = 1,
-            managers = 18,
-            editors = 6,
-            members = 58,
-            supporters = 6
-        )
-        val plan = Plan(
-            memberLimit = 100,
-            supporterLimit = 20
-        )
-        _team.value = Team(id = id, members = members, plan = plan)
+        _team.value = MockService.INSTANCE.getTeam(teamId)
+            .execute().body()!!
     }
 
     private fun getInviteLink() {
-        //ToDo: replace the test data with REST body.
-        _link.value = "https://example.com/ti/eyJpbnZpdGVJZ"
+        _link.value =
+            MockService.INSTANCE.invite(teamId, RoleBody(role = _role))
+                .execute().body()?.url ?: ""
     }
 }

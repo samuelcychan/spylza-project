@@ -35,9 +35,7 @@ class TeamInvitationTest {
         onView(withId(R.id.permission_spinner)).check(matches(isDisplayed()))
         // Check the test values of member/supporter count and limit.
         onView(withId(R.id.member_count)).check(matches(withSubstring("83")))
-        onView(withId(R.id.support_count)).check(matches(withSubstring("6")))
         onView(withId(R.id.member_limit)).check(matches(withSubstring("100")))
-        onView(withId(R.id.support_limit)).check(matches(withSubstring("20")))
         // Transit to QrCodeActivity with generated QR image.
         onView(withId(R.id.share_qr_code_btn)).perform(click())
         onView(withId(R.id.qrcode_image)).check(matches(isDisplayed()))
